@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8"  author="Angelo Basteris">
+   <title>FriendsPoker.club</title>
+   <link rel="stylesheet" href="static/css/normalize.css" type="text/css">
+   <link rel="stylesheet" href="static/css/text.css" type="text/css">
+   <link rel="shortcut icon" href="static/images/chip5.png" />
+</head>
+<body>
+	
+	<div id="header-wrapper" style="height:300px" >
+	<div id="header" class="row"  style="height:300px;background-image: url('poker.jpg'); background-size: 100%;">
+      <div class="large-12 columns">
+         <h1  style="color:red" >FriendsPoker.Club<br>
+		 Play poker with your friends<br>
+		 (in a videocall)<br><br>Free, no limits</h1>
+         </div>
+      </div>
+   </div>
+
+		
+		
+		
+<!--div id="sub-wrapper" -->
+    <div class="sub-intro row">
+        <div class="large-6 columns">
+            <h1 style="color:red;text-align:center">
+               Start playing
+            </h1>
+            <p style="text-align: center">
+			<label for="fname">Room name:</label>
+			<input type="text" id="roomname" name="roomname">
+			<label for="vehicle1"> I am the game host</label>
+			<input type="checkbox" id="host" name="host" value="host" onchange='checkHost()'><br><br>
+			<label for="fname">Your name:</label>
+			<input type="text" id="yourname" name="yourname">
+			
+			
+			<div id="resume_block" style="text-align: center;">
+				<label for="restart"> Restart existing game</label>
+				<input type="checkbox" id="resume" name="resume" value="resume" checked><br>
+			</div>
+			<div class="center"
+            <a id="play" style="text-align: center;color:green" class="center"
+                target=_blank
+				onclick="start();"
+                href=poker.html>
+                  <button class="button1" onclick="alert('ready');start();" style="background-color: #4CAF50;" >
+								Go to room
+                  </button>
+               </a>
+			   </div>
+               <!--a id="play"
+                target=_blank
+				onclick="localStorage.setItem('pokerRoomName',document.getElementById('roomname').value);localStorage.setItem('playername',document.getElementById('yourname').value);"
+                href=poker.html>
+                  <button class="button1" style="background-color: #4C8B50";>
+                     Respawn existing game
+                  </button>
+               </a>
+               <a id="play"
+                target=_blank
+				onclick="localStorage.setItem('pokerRoomName',document.getElementById('roomname').value);localStorage.setItem('playername',document.getElementById('yourname').value);"
+                href=pokerclient.html>
+                  <button class="button1">
+                     Join/rejoin a game
+                  </button>
+               </a-->
+               <!--a id="play"
+                target=_blank
+				onclick="localStorage.setItem('pokerRoomName',document.getElementById('roomname').value);localStorage.setItem('playername',document.getElementById('yourname').value);"
+                href=spectator.html>
+                  <button class="button1">
+                     Not playing, just watching
+                  </button>
+               </a-->
+
+            </p>
+        </div>
+<div class="large-6 columns">
+            <h1  style="color:red">
+               What is this?
+            </h1>
+            <p>
+				This is a 100% free poker game where you can set private tables for up to 10 of your friends. You can choose any room name you want and your name. <br>
+				Whoever joins that pokergame can join the game. 			   I hope you can enjoy pokernights with your friends! And if you enjoy the game and beers: <form  action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="center">
+<input type="hidden" name="cmd" value="_donations" />
+<input type="hidden" name="business" value="angelobasteris@gmail.com" />
+<input type="hidden" name="item_name" value="Beer" />
+<input type="hidden" name="currency_code" value="EUR" />
+<input type="image"  src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" style="display: block;  margin-left: auto;  margin-right: auto;" />
+<img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="10" height="1" class="center"/>
+</form>
+ on PayPal, thank you!
+			   Feel free to download the source code available here: (coming soon)
+            </p>
+        </div>
+        <div class="large-6 columns">
+            <h1 style="color:red">
+               Instructions
+            </h1>
+            <p>
+			1. Arrange with one or more of your friends when you want to play, pick a poker room name that should be unique and who is going to be the HOST (that person should tick "I am the game host")<br>
+			2. Click on Start a new game<br>
+			3. Once you all are in the videoconference, the <b>HOST</b> should just click Start<br>
+				
+			The host runs the server, he/she has to be present for the whole duration of the game and can take actions for other players in case they can't.<br>
+			During the game or at the end of the round, click on your cards to show them.<br>
+			If you bust, click on your name tag to rebuy.<br>
+                
+            </p>
+        </div>
+        
+        <div class="large-6 columns">
+            <h1 style="color:red">
+               Big thanks
+            </h1>
+            <p>
+				To the original developer of this poker game,  js-css-poker available
+               <a id="location"
+                target=_blank
+                href=https://sourceforge.net/projects/js-css-poker/>
+                     here</a>
+            ! To the developers of Jitsi!
+				To my friends who helped me in a beta-testing, which meant we played poker for 5 hours while trying to reconnect, etc. !
+				
+				Enjoy!
+            </p>
+			<p style="text-align: center;color:green">
+				Website developed by Angelo Basteris - last update: 8th May 2020. Feel free to reach via GitHub, or find me on Google and get in touch if you have feedback or want to collaborate.
+			</p>
+        </div>
+
+        
+
+
+    </div>
+<!--/div-->
+<script>
+	if (localStorage.pokerRoomName!=undefined)
+		document.getElementById("roomname").value=localStorage.pokerRoomName;
+	if (localStorage.whoami==0)
+		document.getElementById("host").checked=true;
+	if (localStorage.playername!=undefined)
+		document.getElementById("yourname").value=localStorage.playername;
+	if((localStorage.players==undefined)||!document.getElementById("host").checked)
+		document.getElementById("resume_block").style.display="none";
+	function start()
+	{
+		if(!document.getElementById("host").checked)
+			document.getElementById("play").href="pokerclient.html";
+		else
+		{
+			document.getElementById("play").href="poker.html";
+			if(!document.getElementById("resume").checked)
+				localStorage.clear();
+		}
+		localStorage.setItem('pokerRoomName',document.getElementById('roomname').value);
+		localStorage.setItem('playername',document.getElementById('yourname').value);
+		window.location.href=document.getElementById("play").href
+	}
+	function checkHost()
+	{
+		if(!document.getElementById("host").checked)
+			document.getElementById("resume_block").style.display="none";
+		else
+			if (localStorage.players!=undefined)
+				document.getElementById("resume_block").style.display="block ";
+	}
+/*if (location.protocol !== 'https:') {
+    location.replace(`https:${location.href.substring(location.protocol.length)}`);
+}*/
+</script>
+</body>
+</html>
